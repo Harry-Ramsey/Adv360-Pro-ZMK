@@ -19,6 +19,20 @@
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
+
+        mac_profile: mac_profile {
+            compatible = "zmk,behavior-macro";
+            label = "MAC_PROFILE";
+            #binding-cells = <0>;
+            bindings = <&bt BT_SEL 1>, <&to 4>;
+        };
+
+        windows_profile: windows_profile {
+            compatible = "zmk,behavior-macro";
+            label = "WINDOWS_PROFILE";
+            #binding-cells = <0>;
+            bindings = <&bt BT_SEL 0>, <&to 0>;
+        };
     };
 
     keymap {
@@ -60,7 +74,7 @@
         mod {
             display-name = "Mod";
             bindings = <
-&none           &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &none                                                  &trans           &none  &none       &none       &none  &none  &none
+&none           &windows_profile  &mac_profile  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &none                                              &trans           &none  &none       &none       &none  &none  &none
 &none           &none         &none         &none         &none         &none         &bootloader                                            &bootloader      &none  &none       &none       &none  &none  &none
 &studio_unlock  &none         &none         &none         &none         &none         &none        &none  &none      &bt BT_CLR  &none       &stp STP_BAT     &none  &none       &none       &none  &none  &none
 &none           &none         &none         &none         &macro_ver    &none                             &none      &none                                    &none  &none       &none       &none  &none  &none
@@ -68,9 +82,15 @@
             >;
         };
 
-        extra1 {
-            display-name = "Red";
-            status = "reserved";
+        mac {
+            display-name = "Mac";
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans  &trans                                      &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans                                      &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
+&kp LGUI  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans
+            >;
         };
 
         extra2 {
